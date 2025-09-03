@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            //this line so that function only starts up after the website is loaded in
+            document.addEventListener('DOMContentLoaded', function() {
+
+                //running over each "true class" answer
+
+                let trueButtons = document.querySelectorAll(".true");
+                for (let trueButton of trueButtons) {
+                    trueButton.addEventListener("click", function() {
+                        //set bg to green
+                        trueButton.style.backgroundColor = "green";
+                        //set feedback to correct
+                        trueButton.parentElement.querySelector(".feedback").textContent = "Correct";
+
+                    });
+                }
+
+                //same as last but for false answers
+
+                let falseButtons = document.querySelectorAll(".false");
+                for (let falseButton of falseButtons) {
+                    falseButton.addEventListener("click", function() {
+                        falseButton.style.backgroundColor = "red";
+                        falseButton.parentElement.querySelector(".feedback").textContent = "False";
+                    });
+                }
+
+
+                //check open answer
+                document.querySelector("#check").addEventListener("click", function() {
+                    let input = document.querySelector("input")
+                    //if open ended answer is correct set text field background to green and feedback to correct
+                    if (input.value.toLowerCase() === "tamari") {
+                        input.style.backgroundColor = "green";
+                        input.parentElement.querySelector(".feedback").textContent = "Correct";
+                    }
+                    //else set background to green and feedback to false
+                    else {
+                        input.style.backgroundColor = "red";
+                        input.parentElement.querySelector(".feedback").textContent = "False";
+                    }
+
+                });
+
+
+            });
+        </script>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>Who is the prettiest girl of them all? </h3>
+
+                <button class="true"> Tamari </button>
+                <button class="true"> Tamari </button>
+                <button class="true"> Tamari </button>
+                <button class="false"> some other bitch </button>
+
+                <p class="feedback"></p>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3> who is the smartest person in the world? </h3>
+                <input type="text" placeholder="Input Answer">
+                <button id="check"> Submit </button>
+                <p class="feedback"></p>
+
+
+            </div>
+        </div>
+    </body>
+
+</html>

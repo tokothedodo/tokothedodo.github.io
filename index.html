@@ -1,94 +1,346 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
-    <head>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-        <link href="styles.css" rel="stylesheet">
-        <title>Trivia!</title>
-        <script>
-            // TODO: Add code to check answers to questions
-            //this line so that function only starts up after the website is loaded in
-            document.addEventListener('DOMContentLoaded', function() {
-
-                //running over each "true class" answer
-
-                let trueButtons = document.querySelectorAll(".true");
-                for (let trueButton of trueButtons) {
-                    trueButton.addEventListener("click", function() {
-                        //set bg to green
-                        trueButton.style.backgroundColor = "green";
-                        //set feedback to correct
-                        trueButton.parentElement.querySelector(".feedback").textContent = "Correct";
-
-                    });
-                }
-
-                //same as last but for false answers
-
-                let falseButtons = document.querySelectorAll(".false");
-                for (let falseButton of falseButtons) {
-                    falseButton.addEventListener("click", function() {
-                        falseButton.style.backgroundColor = "red";
-                        falseButton.parentElement.querySelector(".feedback").textContent = "False";
-                    });
-                }
-
-
-                //check open answer
-                document.querySelector("#check").addEventListener("click", function() {
-                    let input = document.querySelector("input")
-                    //if open ended answer is correct set text field background to green and feedback to correct
-                    if (input.value.toLowerCase() === "tamari") {
-                        input.style.backgroundColor = "green";
-                        input.parentElement.querySelector(".feedback").textContent = "Correct";
-                    }
-                    //else set background to green and feedback to false
-                    else {
-                        input.style.backgroundColor = "red";
-                        input.parentElement.querySelector(".feedback").textContent = "False";
-                    }
-
-                });
-
-
-            });
-        </script>
-    </head>
-
-    <body>
-        <div class="header">
-            <h1>Trivia!</h1>
-        </div>
-
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS50x: კოგნიტური მეცნიერების პერსპექტივა</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <div class="section">
-                <h2>Part 1: Multiple Choice </h2>
-                <hr>
-                <!-- TODO: Add multiple choice question here -->
-                <h3>Who is the prettiest girl of them all? </h3>
-
-                <button class="true"> Tamari </button>
-                <button class="true"> Tamari </button>
-                <button class="true"> Tamari </button>
-                <button class="false"> some other ... </button>
-
-                <p class="feedback"></p>
-
-            </div>
-
-            <div class="section">
-                <h2>Part 2: Free Response</h2>
-                <hr>
-                <!-- TODO: Add free response question here -->
-                <h3> who is the smartest person in the world? </h3>
-                <input type="text" placeholder="Input Answer">
-                <button id="check"> Submit </button>
-                <p class="feedback"></p>
-
-
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-brain me-2"></i>CS50x & კოგნიტური მეცნიერება
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#home">მთავარი</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#cognitive-load">კოგნიტური დატვირთვა</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#learning-principles">სწავლის პრინციპები</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#memory-metacognition">მეხსიერება და მეტაკოგნიცია</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#literacy-numeracy">წიგნიერება და რაოდენობრივი აზროვნება</a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </body>
+    </nav>
 
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-4">CS50x: კოგნიტური მეცნიერების პერსპექტივა</h1>
+            <p class="lead mb-4">გაეცანით, თუ როგორ აქცევს Harvard-ის CS50x კურსი პროგრამირების სწავლას კოგნიტური მეცნიერების პრინციპების გამოყენების უნიკალურ მაგალითად</p>
+            <a href="#cognitive-load" class="btn btn-lg btn-light px-4 py-2">გაიგე მეტი <i class="fas fa-arrow-down ms-2"></i></a>
+        </div>
+    </section>
+
+    <!-- Cognitive Load Section -->
+    <section id="cognitive-load" class="py-5">
+        <div class="container">
+            <h2 class="section-title">კოგნიტური დატვირთვა და CS50x</h2>
+            <p class="mb-4">კოგნიტური დატვირთვის თეორია აღწერს, თუ როგორ იტვირთება მუშა მეხსიერების სიმძლავრე სწავლის პროცესში. CS50x ეფექტურად მართავს ამ დატვირთვას მრავალმხრივი სწავლების მიდგომების გამოყენებით.</p>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="cognitive-principle">
+                        <div class="principle-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>მუშა მეხსიერების დატვირთვის ოპტიმიზაცია</h4>
+                        <p>CS50x იყენებს სეგმენტაციას და თანმიმდევრულობას კომპლექსური კონცეფციების გასამარტივებლად. ლექციები დაყოფილია მარტივად გასაგებ ნაწილებად, რაც ხელს უწყობს ინფორმაციის სემანტიკურ გადამუშავებას და ამცირებს კოგნიტურ დატვირთვას.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="cognitive-principle">
+                        <div class="principle-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h4>ვიზუალური და აუდიო ნარატივები</h4>
+                        <p>კურსი ეფუძნება მულტიმედიურ სწავლებას, რაც ხელს უწყობს ინფორმაციის უკეთ გადამუშავებას. დევიდ მალანის დინამიური პრეზენტაციები, ვიზუალური მაგალითები და პრაქტიკული დემონსტრაციები ერთმანეთს ავსებს, უზრუნველყოფს მრავალმხრივ რეპრეზენტაციას.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cs50-highlight text-center mt-5">
+                <h3 class="mb-3">როგორ მართავს CS50x კოგნიტურ დატვირთვას?</h3>
+                <div class="row justify-content-center">
+                    <div class="col-md-3 mb-3">
+                        <div class="card bg-transparent border-light">
+                            <div class="card-body">
+                                <i class="fas fa-code card-icon"></i>
+                                <h5>პრობლემის სეგმენტაცია</h5>
+                                <p>რთული პრობლემები იყოფა პატარა, მარტივად გასაგებ ნაწილებად</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card bg-transparent border-light">
+                            <div class="card-body">
+                                <i class="fas fa-puzzle-piece card-icon"></i>
+                                <h5>თანმიმდევრული სტრუქტურა</h5>
+                                <p>თითოეული კვირა აგებულია წინა მასალის ცოდნაზე</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card bg-transparent border-light">
+                            <div class="card-body">
+                                <i class="fas fa-hands-helping card-icon"></i>
+                                <h5>მხარდაჭერის მექანიზმები</h5>
+                                <p>ფორუმები, სამუშაო საათები და თანატოლების მხარდაჭერა</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Principles Section -->
+    <section id="learning-principles" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">სწავლის პრინციპები CS50x-ში</h2>
+            <p class="mb-4">CS50x ეფუძნება კოგნიტური ნეირომეცნიერების თანამედროვე პრინციპებს, რაც ხდის მას განსაკუთრებით ეფექტურ საგანმანათლებლო გამოცდილებად.</p>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-sync-alt card-icon"></i>
+                            <h5 class="card-title">იმპლიციტური და ექსპლიციტური სწავლა</h5>
+                            <p class="card-text">CS50x აერთიანებს როგორც პირდაპირ ინსტრუქციას (ექსპლიციტური), ასევე პრაქტიკული გამოცდილების მეშვეობით სწავლას (იმპლიციტური). პრობლემების კომპლექტები და პროექტები საშუალებას აძლევს სტუდენტებს განავითარონ პრაქტიკული უნარები უშუალო გამოცდილების მეშვეობით.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-users card-icon"></i>
+                            <h5 class="card-title">სოციალური კოგნიცია</h5>
+                            <p class="card-text">კურსი ხელს უწყობს თანამშრომლობით სწავლას ფორუმების, სამუშაო საათების და პროექტების მეშვეობით. ეს ასახავს სოციალური კოგნიციის პრინციპს, რომლის მიხედვითაც სწავლა გაძლიერებულია სოციალური ურთიერთქმედების მეშვეობით.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-expand-arrows-alt card-icon"></i>
+                            <h5 class="card-title">მულტიმოდალური პროცესები</h5>
+                            <p class="card-text">CS50x იყენებს მრავალ სენსორულ არხს ინფორმაციის მისაწოდებლად: ვიზუალური (ლექციები, სლაიდები), აუდიტორული (განმარტებები) და კინესტეტიკური (კოდირება). ეს მულტიმოდალური მიდგომა ხელს უწყობს უკეთეს კოდირებას და ინფორმაციის აღდგენას.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-search card-icon"></i>
+                            <h5 class="card-title">მეტაკოგნიცია და თვითრეგულაცია</h5>
+                            <p class="card-text">კურსი ხელს უწყობს მეტაკოგნიტურ უნარებს პრობლემის გადაჭრის პროცესის რეფლექსიის მეშვეობით. სტუდენტები იწვევენ საკუთარი აზროვნების პროცესებს და ვითარდებიან თვითრეგულაციის უნარები, რაც მნიშვნელოვანია ეფექტური სწავლისთვის.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-binoculars card-icon"></i>
+                            <h5 class="card-title">სწავლა დაკვირვების საშუალებით</h5>
+                            <p class="card-text">ლექციებში დემონსტრირებული პრობლემების გადაჭრის პროცესი საშუალებას აძლევს სტუდენტებს დააკვირდნენ ექსპერტის აზროვნებას. ეს ასახავს სოციალური სწავლების თეორიას და ხელს უწყობს კოგნიტურ მოდელირებას.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-project-diagram card-icon"></i>
+                            <h5 class="card-title">მრავალმხრივი რეპრეზენტაციები</h5>
+                            <p class="card-text">CS50x წარმოგიდგენთ პროგრამირების კონცეფციებს სხვადასხვა ფორმატში: ვიზუალური დიაგრამები, კოდის მაგალითები, ანალოგიები და მეტაფორები. ეს მრავალმხრივი წარმოდგენა ხელს უწყობს ღრმა კოდირებას და კონცეფციების უკეთ გაგებას.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memory and Metacognition Section -->
+    <section id="memory-metacognition" class="py-5">
+        <div class="container">
+            <h2 class="section-title">მეხსიერება და მეტაკოგნიცია CS50x-ში</h2>
+            <p class="mb-4">CS50x ეფექტურად იყენებს მეხსიერებისა და მეტაკოგნიტური პროცესების პრინციპებს სწავლის გასაუმჯობესებლად.</p>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="cognitive-principle">
+                        <h4>ინფორმაციის გადამუშავება და სემანტიკური მნიშვნელობა</h4>
+                        <p>CS50x ხელს უწყობს ინფორმაციის სემანტიკურ გადამუშავებას რეალური მსოფლიოს მაგალითებისა და პრაქტიკული აპლიკაციების მეშვეობით. სტუდენტები არა მხოლოდ სწავლობენ კოდის სინტაქსს, არამედ იმასაც, თუ როგორ გამოიყენონ ეს ცოდნა რეალურ პრობლემების გადასაჭრელად.</p>
+                        <p>ინსტრუქციები CS50x-ში შექმნილია ინფორმაციის აღდგენისა და მოგონების ხელშესაწყობად. მოკლე ლექციები, შემდეგ პრაქტიკული დავალებები და განმეორებითი პროექტები ხელს უწყობს ინფორმაციის გადატანას მუშა მეხსიერებიდან გრძელვადიან მეხსიერებაში.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="cognitive-principle">
+                        <h4>მეტაკოგნიტური მონიტორინგი და კონტროლი</h4>
+                        <p>კურსის სტრუქტურა ხელს უწყობს მეტაკოგნიტურ მონიტორინგს - სტუდენტები რეგულარულად აფასებენ საკუთარ პროგრესს და აინტერესებენ, რა უნდა ისწავლონ შემდეგ. ეს თვითრეფლექსია აუმჯობესებს მეტაკოგნიტურ კონტროლს სწავლის პროცესზე.</p>
+                        <p>CS50x იყენებს სხვადასხვა მეტაკოგნიტურ სტრატეგიებს, მათ შორის:</p>
+                        <ul>
+                            <li>თვითშეფასების შესაძლებლობები ქვიზების და პრობლემების კომპლექტების მეშვეობით</li>
+                            <li>საკუთარი კოდის განხილვა და რეფლექსია</li>
+                            <li>პრობლემის გადაჭრის სტრატეგიების განხილვა</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-5">
+                <h3 class="mb-4">CS50x-ის მეხსიერების გაძლიერების სტრატეგიები</h3>
+                <div class="timeline">
+                    <div class="timeline-item left">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">აქტიური რეკაპიტულაცია</h5>
+                                <p class="card-text">პრობლემების კომპლექტები და პროექტები მოითხოვს კონცეფციების აქტიურ გამოყენებას, რაც ხელს უწყობს მათ კოდირებას გრძელვადიან მეხსიერებაში.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">ინტერლივინგი</h5>
+                                <p class="card-text">კურსი აერთიანებს სხვადასხვა კონცეფციებს ერთად, რაც ხელს უწყობს მათ შორის კავშირების დამყარებას და უკეთეს აღდგენას.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">სპეისირებული გამეორება</h5>
+                                <p class="card-text">კონცეფციები უბრუნდება სხვადასხვა კონტექსტში მთელი კურსის განმავლობაში, რაც ხელს უწყობს გრძელვადიან შენარჩუნებას.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">ელაბორაციული კოდირება</h5>
+                                <p class="card-text">კონცეფციები უკავშირდება არსებულ ცოდნას და რეალურ მსოფლიოს აპლიკაციებს, რაც ხელს უწყობს ღრმა კოდირებას.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Literacy and Numeracy Section -->
+    <section id="literacy-numeracy" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">წიგნიერებისა და რაოდენობრივი აზროვნების საფუძვლები</h2>
+            <p class="mb-4">CS50x ემსახურება როგორც "კომპიუტერული წიგნიერების" საფუძველი, ანალოგიურად როგორც პირველი ენა ემსახურება წერა-კითხვის საფუძველს.</p>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="cognitive-principle">
+                        <h4>კომპიუტერული წიგნიერება, როგორც "პირველი ენა"</h4>
+                        <p>ისევე, როგორც პირველი ენის შესწავლა ხდის შესაძლებელს წერა-კითხვის ათვისებას, CS50x ემსახურება როგორც საფუძველი კომპიუტერული მეცნიერებისთვის. კურსი აშენებს კოგნიტურ ჩარჩოს, რომელიც საჭიროა პროგრამირების კონცეფციების გასაგებად და მათ გამოყენებად.</p>
+                        <p>კურსის სტრუქტურა ემსახურება როგორც "ნეირომეცნიერული საფუძველი" კომპიუტერული აზროვნებისთვის, ანალოგიურად იმისა, თუ როგორ ემსახურება პირველი ენის შესწავლა წერა-კითხვის ნეირომეცნიერულ საფუძველს.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="cognitive-principle">
+                        <h4>რაოდენობრივი აზროვნება და ალგორითმული აზროვნება</h4>
+                        <p>CS50x ვითარდება რაოდენობრივი აზროვნების საფუძველზე, რომელსაც სტუდენტებმა შეიძინეს მათემატიკისა და სხვა დისციპლინების შესწავლის პროცესში. კურსი განავითარებს ალგორითმულ აზროვნებას - უნარს, დაინახოს პრობლემები, როგორც ნაბიჯ-ნაბიჯ გადასაჭრელი ამოცანები.</p>
+                        <p>ეს ალგორითმული აზროვნება ემსახურება როგორც კოგნიტური ჩარჩო არა მხოლოდ პროგრამირებისთვის, არამედ სხვადასხვა დომენებში პრობლემების გადაჭრისთვის, რაც ასახავს რაოდენობრივი წარმოდგენებისა და მათ ქვეშ მდებარე კოგნიტური პროცესების მნიშვნელობას.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-language card-icon"></i>
+                            <h5>კომპიუტერული ენის ათვისება</h5>
+                            <p>ისევე, როგორც მეორე ენის შესწავლა, პროგრამირების ენების შესწავლა იყენებს ანალოგიურ კოგნიტურ პროცესებს, როგორიცაა სინტაქსისა და სემანტიკის ათვისება.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-sitemap card-icon"></i>
+                            <h5>კოგნიტური სქემების განვითარება</h5>
+                            <p>CS50x ხელს უწყობს კოგნიტური სქემების განვითარებას პროგრამირების კონცეფციებისთვის, რაც ხელს უწყობს მათ გაგებას და გამოყენებას.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-cogs card-icon"></i>
+                            <h5>მენტალური მოდელების ჩამოყალიბება</h5>
+                            <p>კურსი ხელს უწყობს მენტალური მოდელების ჩამოყალიბებას იმის შესახებ, თუ როგორ მუშაობს კომპიუტერები და პროგრამები, რაც აუმჯობესებს პრობლემის გადაჭრის უნარს.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>CS50x: კოგნიტური მეცნიერების პერსპექტივა</h4>
+                    <p>ეს ვებსაიტი შექმნილია კოგნიტური პროცესების სწავლის კლასისთვის, რათა გამოიკვლიოს CS50x-ის ეფექტურობა კოგნიტური მეცნიერების პრინციპების გამოყენების თვალსაზრისით.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>რესურსები</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://cs50.harvard.edu/x/" class="text-light">CS50x ოფიციალური საიტი</a></li>
+                        <li><a href="https://www.edx.org/course/cs50s-introduction-to-computer-science" class="text-light">edX-ზე CS50x</a></li>
+                        <li><a href="https://www.youtube.com/c/cs50" class="text-light">CS50 YouTube არხი</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>კონტაქტი</h5>
+                    <p>კითხვებისთვის დაგვიკავშირდით:</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@example.com</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>&copy; 2023 CS50x: კოგნიტური მეცნიერების პერსპექტივა. ყველა უფლება დაცულია.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
 </html>

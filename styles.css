@@ -304,6 +304,33 @@ body.dark-mode {
     .right {
         left: 0%;
     }
+
+    .step-by-step {
+    counter-reset: step;
+}
+
+.step {
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 2rem;
+}
+
+.step:before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    background: var(--cs50-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
     
     .dark-mode .timeline-item::before {
         border-color: transparent var(--dark-secondary) transparent transparent;

@@ -279,7 +279,112 @@ body.dark-mode {
     color: var(--dark-text);
 }
 
+/* Learning Tips */
+.learning-tip {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+}
+
+/* Research Boxes */
+.research-box {
+    border-left: 4px solid var(--cs50-blue);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    background: rgba(0, 68, 204, 0.05);
+    padding: 1.5rem;
+    border-radius: 0 8px 8px 0;
+}
+
+.dark-mode .research-box {
+    background: rgba(77, 121, 255, 0.1);
+}
+
+/* Resource Items */
+.resource-item {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.dark-mode .resource-item {
+    border-bottom: 1px solid #444;
+}
+
+.resource-item:last-child {
+    border-bottom: none;
+}
+
+/* Step-by-Step Guide */
+.step-by-step {
+    counter-reset: step;
+}
+
+.step {
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 2rem;
+}
+
+.step:before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--cs50-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.dark-mode .step:before {
+    background: var(--cs50-light-blue);
+}
+
+.step h4 {
+    margin-bottom: 1rem;
+    color: var(--cs50-blue);
+}
+
+.dark-mode .step h4 {
+    color: var(--cs50-light-blue);
+}
+
+.step p {
+    margin-bottom: 1rem;
+}
+
+.step ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.step ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* Mobile Responsiveness */
 @media screen and (max-width: 768px) {
+    .hero-section {
+        padding: 80px 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .cognitive-principle {
+        padding: 1.5rem;
+    }
+    
     .timeline::after {
         left: 31px;
     }
@@ -304,33 +409,16 @@ body.dark-mode {
     .right {
         left: 0%;
     }
-
-    .step-by-step {
-    counter-reset: step;
-}
-
-.step {
-    position: relative;
-    padding-left: 3rem;
-    margin-bottom: 2rem;
-}
-
-.step:before {
-    counter-increment: step;
-    content: counter(step);
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 2rem;
-    height: 2rem;
-    background: var(--cs50-blue);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-}
+    
+    .step {
+        padding-left: 2.5rem;
+    }
+    
+    .step:before {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+    }
     
     .dark-mode .timeline-item::before {
         border-color: transparent var(--dark-secondary) transparent transparent;
